@@ -1,8 +1,11 @@
 import React from 'react'
+import TaskItem from './TaskItem'
 
 function TaskList() {
   return (
-    <div>TaskList</div>
+    <div>
+      
+    </div>
   )
 }
 
