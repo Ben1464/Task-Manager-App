@@ -86,4 +86,4 @@ function TaskItem({Task, DeleteTask, updateTask}) {
     )      
 }
 
-export default TaskItem
+export default TaskItem 
