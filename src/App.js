@@ -3,6 +3,7 @@ import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Footer from './components/Footer';
+import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
