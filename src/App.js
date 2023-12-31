@@ -14,13 +14,13 @@ const App = () => {
   const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/tasks')
+    axios.get('http://localhost:3000/tasks')
       .then(response => setTasks(response.data.tasks))
       .catch(error => console.error('Error fetching tasks:', error));
   }, []);
 
   const addTask = (task) => {
-    axios.post('http://localhost:3001/tasks', task)
+    axios.post('http://localhost:3000/tasks', task)
       .then(response => {
         const newTask = { ...response.data, status: 'Pending' };
         setTasks([...tasks, newTask]);
@@ -32,7 +32,7 @@ const App = () => {
   };
 
   const deleteTask = (taskId) => {
-    axios.delete(`http://localhost:3001/tasks/${taskId}`)
+    axios.delete(`http://localhost:3000/tasks/${taskId}`)
       .then(() => setTasks(tasks.filter(t => t.id !== taskId)))
       .catch(error => console.error('Error deleting task:', error));
   };
@@ -43,7 +43,7 @@ const App = () => {
   };
 
   const updateTask = (updatedTask) => {
-    axios.put(`http://localhost:3001/tasks/${editingTask.id}`, updatedTask)
+    axios.put(`http://localhost:3000/tasks/${editingTask.id}`, updatedTask)
       .then(response => {
         setTasks(tasks.map(t => (t.id === response.data.id ? { ...response.data, status: t.status } : t)));
         setEditingTask(null);
