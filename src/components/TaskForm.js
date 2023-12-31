@@ -13,16 +13,16 @@ const TaskForm = ({ onSubmit, task }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Title:</label>
+      <label htmlFor = "title">Title:</label>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-      <label>Priority:</label>
+      <label htmlFor = "priority">Priority:</label>
       <input type="text" value={priority} onChange={(e) => setPriority(e.target.value)} />
 
-      <label>Due Date:</label>
-      <input type="text" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+      <label htmlFor = "dueDate">Due Date:</label>
+      <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
 
-      <label>Category:</label>
+      <label htmlFor = "category">Category:</label>
       <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
 
       <button type="submit">Save</button>
