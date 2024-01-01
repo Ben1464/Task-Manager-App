@@ -47,6 +47,8 @@ const App = () => {
       .then(response => {
         setTasks(tasks.map(t => (t.id === response.data.id ? { ...response.data, status: t.status } : t)));
         setEditingTask(null);
+
+        // Set the current task and show the details form
         setCurrentTask(response.data);
         setShowDetailsForm(true);
       })
