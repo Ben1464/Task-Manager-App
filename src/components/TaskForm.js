@@ -31,7 +31,7 @@ const TaskForm = ({ onSubmit, task }) => {
       <select value={category} onChange={(e) => setCategory(e.target.value)}>
         <option value="Work">Work</option>
         <option value="Personal">Personal</option>
-        <option value="Shopping">Shopping</option>
+        <option value="Shopping">Health</option>
         {/* Add more options as needed */}
       </select>
 
