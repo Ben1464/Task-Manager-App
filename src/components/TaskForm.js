@@ -12,18 +12,19 @@ const TaskForm = ({ onSubmit, task }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Task:</label>
+
+      <label htmlFor = "title">Title:</label>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-      <label>Priority:</label>
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-      </select>
+      <label htmlFor = "priority">Priority:</label>
+      <input type="text" value={priority} onChange={(e) => setPriority(e.target.value)} />
 
-      <label>Due Date:</label>
+      <label htmlFor = "dueDate">Due Date:</label>
       <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+
+      <label htmlFor = "category">Category:</label>
+      <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} />
+
 
       <button type="submit">Save</button>
     </form>
