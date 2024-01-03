@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import TaskDetailsForm from './TaskDetailsForm';
 
-function TaskItem({ task, deleteTask, updateTask }) {
+function TaskItem({ task, deleteTask, updateTask, onSave }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState({ ...task });
 
@@ -16,6 +17,7 @@ function TaskItem({ task, deleteTask, updateTask }) {
 
   const handleSave = () => {
     updateTask(editedTask);
+    onSave(editedTask); // Call the onSave function with the edited task
     setIsEditing(false);
   };
 
@@ -56,6 +58,9 @@ function TaskItem({ task, deleteTask, updateTask }) {
           <button onClick={handleDelete}>Delete</button>
         </div>
       )}
+
+      {/* Display details form when onSave is true */}
+      {onSave && <TaskDetailsForm currentTask={editedTask} previousTasks={[]} />}
     </div>
   );
 }

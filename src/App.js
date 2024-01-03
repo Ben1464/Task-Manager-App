@@ -4,7 +4,7 @@ import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 import Footer from './components/Footer';
-import TaskDetailsForm from './components/TaskDetailsForm'; // Import the new component
+import TaskDetailsForm from './components/TaskDetailsForm';
 import './App.css';
 
 const App = () => {
@@ -47,12 +47,22 @@ const App = () => {
       .then(response => {
         setTasks(tasks.map(t => (t.id === response.data.id ? { ...response.data, status: t.status } : t)));
         setEditingTask(null);
-
-        // Set the current task and show the details form
         setCurrentTask(response.data);
         setShowDetailsForm(true);
       })
       .catch(error => console.error('Error updating task:', error));
+  };
+
+  const viewSavedTasks = () => {
+    // Assuming savedTasks is an array that holds the saved tasks
+    const savedTasks = []; // Replace this with the actual array of saved tasks
+
+    // Set the current task to the last saved task (if available)
+    const currentTask = savedTasks.length > 0 ? savedTasks[savedTasks.length - 1] : null;
+
+    // Set the state to display the details form with saved task details
+    setCurrentTask(currentTask);
+    setShowDetailsForm(true);
   };
 
   return (
@@ -60,10 +70,11 @@ const App = () => {
       <h1>Task Manager</h1>
       <TaskForm onSubmit={editingTask ? updateTask : addTask} task={editingTask} />
       <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={editTask} />
-      <Footer />
 
-      {/* Render the TaskDetailsForm when showDetailsForm is true */}
-      {showDetailsForm && <TaskDetailsForm currentTask={currentTask} previousTasks={tasks} />}
+      {showDetailsForm && <TaskDetailsForm currentTask={currentTask} previousTasks={tasks} isSavedTask={false} />}
+      <button onClick={viewSavedTasks}>View Saved Tasks</button>
+
+      <Footer />
     </div>
   );
 };
