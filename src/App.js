@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import Footer from './components/Footer';
-import TaskDetailsForm from './components/TaskDetailsForm';
+import TaskDetailsForm from './components/TaskDetailsForm'; // Import the new component
 import './App.css';
 
 const App = () => {
@@ -67,14 +66,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>Task Manager</h1>
       <TaskForm onSubmit={editingTask ? updateTask : addTask} task={editingTask} />
       <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={editTask} />
 
-      {showDetailsForm && <TaskDetailsForm currentTask={currentTask} previousTasks={tasks} isSavedTask={false} />}
-      <button onClick={viewSavedTasks}>View Saved Tasks</button>
-
-      <Footer />
+      {/* Render the TaskDetailsForm when showDetailsForm is true */}
+      {showDetailsForm && <TaskDetailsForm currentTask={currentTask} previousTasks={tasks} />}
     </div>
   );
 };

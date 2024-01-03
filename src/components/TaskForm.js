@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 
 const TaskForm = ({ onSubmit, task }) => {
   const initialFormState = {
@@ -9,6 +10,7 @@ const TaskForm = ({ onSubmit, task }) => {
   };
 
   const [formData, setFormData] = useState(task ? task : initialFormState);
+  const [category, setCategory] = useState(''); // Add category state
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +27,7 @@ const TaskForm = ({ onSubmit, task }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-
+      <h1>Task Manager</h1>
       <label htmlFor="title">Task:</label>
       <input
         type="text"
@@ -67,6 +69,7 @@ const TaskForm = ({ onSubmit, task }) => {
       <div>
         <button type="submit">Save</button>
       </div>
+      <Footer/>
 
     </form>
   );
