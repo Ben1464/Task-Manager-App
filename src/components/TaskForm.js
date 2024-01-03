@@ -2,31 +2,59 @@ import React, { useState } from 'react';
 import Footer from './Footer';
 
 const TaskForm = ({ onSubmit, task }) => {
-  const [title, setTitle] = useState(task ? task.title : '');
-  const [priority, setPriority] = useState(task ? task.priority : 'Low');
-  const [dueDate, setDueDate] = useState(task ? task.dueDate : '');
-  const [category, setCategory] = useState(task ? task.category : '');
+  const initialFormState = {
+    title: '',
+    priority: 'Low',
+    dueDate: '',
+    category: ''
+  };
+
+  const [formData, setFormData] = useState(task ? task : initialFormState);
+  const [category, setCategory] = useState(''); // Add category state
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ title, priority, dueDate, category });
+    onSubmit(formData);
+
+    // Reset the form fields to their initial values
+    setFormData(initialFormState);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Task Manager</h1>
-      <label htmlFor="title">Title:</label>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <label htmlFor="title">Task:</label>
+      <input
+        type="text"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+      />
 
       <label htmlFor="priority">Priority:</label>
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+      <select
+        name="priority"
+        value={formData.priority}
+        onChange={handleChange}
+      >
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
 
       <label htmlFor="dueDate">Due Date:</label>
-      <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+      <input
+        type="date"
+        name="dueDate"
+        value={formData.dueDate}
+        onChange={handleChange}
+      />
+
 
       <div>
         <label htmlFor="category">Category:</label>
@@ -42,6 +70,7 @@ const TaskForm = ({ onSubmit, task }) => {
         <button type="submit">Save</button>
       </div>
       <Footer/>
+
     </form>
   );
 };
