@@ -59,7 +59,7 @@ form {
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: bold;
   color: #333;
 }
@@ -139,7 +139,8 @@ footer {
   margin-top: 20px;
   padding: 15px 0;
   text-align: center;
-  background: linear-gradient(135deg, #ff6f61 0%, #ffbb58 100%);
+  background: #111;
+  border-radius: 8px;
   color: #fff;
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -153,4 +154,12 @@ footer {
   .taskList {
     grid-template-columns: 1fr;
   }
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
 }

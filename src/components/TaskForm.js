@@ -53,19 +53,21 @@ const TaskForm = ({ onSubmit, task }) => {
         onChange={handleChange}
       />
 
-      <label htmlFor="category">Category:</label>
-      <select
-        name="category"
-        value={formData.category}
-        onChange={handleChange}
-      >
-        <option value="Work">Work</option>
-        <option value="Personal">Personal</option>
-        <option value="Shopping">Health</option>
-        {/* Add more options as needed */}
-      </select>
 
-      <button type="submit">Save</button>
+      <div>
+        <label htmlFor="category">Category:</label>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Shopping">Shopping</option>
+          {/* Add more options as needed */}
+        </select>
+      </div>
+
+      <div>
+        <button type="submit">Save</button>
+      </div>
+
     </form>
   );
 };
