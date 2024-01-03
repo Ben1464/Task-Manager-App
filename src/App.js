@@ -56,7 +56,6 @@ const App = () => {
 
   return (
     <div>
-      <h1>Task Manager</h1>
       <TaskForm onSubmit={editingTask ? updateTask : addTask} task={editingTask} />
       <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={editTask} />
 

@@ -14,7 +14,7 @@ const TaskForm = ({ onSubmit, task }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-
+      <h1>Task Manager</h1>
       <label htmlFor="title">Title:</label>
       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
