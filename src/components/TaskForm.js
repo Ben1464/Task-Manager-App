@@ -27,15 +27,19 @@ const TaskForm = ({ onSubmit, task }) => {
       <label htmlFor="dueDate">Due Date:</label>
       <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
 
-      <label htmlFor="category">Category:</label>
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option value="Work">Work</option>
-        <option value="Personal">Personal</option>
-        <option value="Shopping">Shopping</option>
-        {/* Add more options as needed */}
-      </select>
+      <div>
+        <label htmlFor="category">Category:</label>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Shopping">Shopping</option>
+          {/* Add more options as needed */}
+        </select>
+      </div>
 
-      <button type="submit">Save</button>
+      <div>
+        <button type="submit">Save</button>
+      </div>
     </form>
   );
 };
