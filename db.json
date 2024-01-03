@@ -196,6 +196,13 @@
       "dueDate": "2024-01-04",
       "category": "Personal",
       "id": 32
+    },
+    {
+      "title": "Cleaning ",
+      "priority": "Medium",
+      "dueDate": "2024-01-12",
+      "category": "",
+      "id": 33
     }
   ]
 }
