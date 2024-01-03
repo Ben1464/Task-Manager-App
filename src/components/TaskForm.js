@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Footer from './Footer';
 
 const TaskForm = ({ onSubmit, task }) => {
   const [title, setTitle] = useState(task ? task.title : '');
@@ -40,6 +41,7 @@ const TaskForm = ({ onSubmit, task }) => {
       <div>
         <button type="submit">Save</button>
       </div>
+      <Footer/>
     </form>
   );
 };
