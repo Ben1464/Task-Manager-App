@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import TaskDetailsForm from './components/TaskDetailsForm'; // Import the new component
+import TaskDetailsForm from './components/TaskDetailsForm';
+import SavedTasksForm from './components/SavedTaskForm';
 import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [showDetailsForm, setShowDetailsForm] = useState(false);
+  const [showSavedTasks, setShowSavedTasks] = useState(false); // New state
   const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
@@ -53,15 +55,8 @@ const App = () => {
   };
 
   const viewSavedTasks = () => {
-    // Assuming savedTasks is an array that holds the saved tasks
-    const savedTasks = []; // Replace this with the actual array of saved tasks
-
-    // Set the current task to the last saved task (if available)
-    const currentTask = savedTasks.length > 0 ? savedTasks[savedTasks.length - 1] : null;
-
-    // Set the state to display the details form with saved task details
-    setCurrentTask(currentTask);
-    setShowDetailsForm(true);
+    setShowDetailsForm(false); // Hide the details form
+    setShowSavedTasks(true); // Show the saved tasks form
   };
 
   return (
@@ -71,6 +66,10 @@ const App = () => {
 
       {/* Render the TaskDetailsForm when showDetailsForm is true */}
       {showDetailsForm && <TaskDetailsForm currentTask={currentTask} previousTasks={tasks} />}
+
+      {/* Render the SavedTasksForm when showSavedTasks is true */}
+      {showSavedTasks && <SavedTasksForm savedTasks={tasks} />}
+
     </div>
   );
 };
