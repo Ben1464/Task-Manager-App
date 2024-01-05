@@ -11,14 +11,14 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [showDetailsForm, setShowDetailsForm] = useState(false);
-  const [showSavedTasks, setShowSavedTasks] = useState(false); // New state
+  const [showSavedTasks, setShowSavedTasks] = useState(false);
   const [currentTask, setCurrentTask] = useState(null);
 
   useEffect(() => {
     axios.get('http://localhost:3000/tasks')
       .then(response => setTasks(response.data.tasks))
       .catch(error => console.error('Error fetching tasks:', error));
-  }, []);
+  }, [tasks]); // Add tasks as a dependency
 
   const addTask = (task) => {
     axios.post('http://localhost:3000/tasks', task)
@@ -55,8 +55,8 @@ const App = () => {
   };
 
   const viewSavedTasks = () => {
-    setShowDetailsForm(false); // Hide the details form
-    setShowSavedTasks(true); // Show the saved tasks form
+    setShowDetailsForm(false);
+    setShowSavedTasks(true);
   };
 
   return (
