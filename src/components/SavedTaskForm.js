@@ -1,15 +1,16 @@
-// SavedTasksForm.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 import TaskDetailsForm from './TaskDetailsForm';
 
 const SavedTasksForm = ({ savedTasks, immediateSavedTask }) => {
   return (
     <div>
       <h2>Saved Tasks Details</h2>
-      {/* Check if savedTasks is defined before mapping over it */}
       {savedTasks && savedTasks.length > 0 ? (
         savedTasks.map((savedTask) => (
-          <TaskDetailsForm key={savedTask.id} currentTask={savedTask} />
+          <div key={savedTask.id}>
+            <Link to={`/saved-tasks/${savedTask.id}`}>{savedTask.title}</Link>
+          </div>
         ))
       ) : (
         <p>No saved tasks available</p>

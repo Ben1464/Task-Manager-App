@@ -4,13 +4,12 @@ import Footer from './Footer';
 const TaskForm = ({ onSubmit, task }) => {
   const initialFormState = {
     title: '',
-    priority: 'low',
+    priority: '', // No default priority
     dueDate: '',
-    category: ''
+    category: '', // No default category
   };
 
   const [formData, setFormData] = useState(task ? task : initialFormState);
-  const [category, setCategory] = useState(''); // Add category state
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,36 +28,23 @@ const TaskForm = ({ onSubmit, task }) => {
     <form onSubmit={handleSubmit}>
       <h1>Task Manager</h1>
       <label htmlFor="title">Task:</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-      />
+      <input type="text" name="title" value={formData.title} onChange={handleChange} />
 
       <label htmlFor="priority">Priority:</label>
-      <select
-        name="priority"
-        value={formData.priority}
-        onChange={handleChange}
-      >
+      <select name="priority" value={formData.priority} onChange={handleChange}>
+        <option value="">Select Priority</option>
         <option value="Low">Low</option>
         <option value="Medium">Medium</option>
         <option value="High">High</option>
       </select>
 
       <label htmlFor="dueDate">Due Date:</label>
-      <input
-        type="date"
-        name="dueDate"
-        value={formData.dueDate}
-        onChange={handleChange}
-      />
-
+      <input type="date" name="dueDate" value={formData.dueDate} onChange={handleChange} />
 
       <div>
         <label htmlFor="category">Category:</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select name="category" value={formData.category} onChange={handleChange}>
+          <option value="">Select Category</option>
           <option value="Work">Work</option>
           <option value="Personal">Personal</option>
           <option value="Shopping">Health</option>
@@ -68,10 +54,9 @@ const TaskForm = ({ onSubmit, task }) => {
 
       <div>
         <button type="submit">Save</button>
-        <button type ="onClick">Tasks</button>
+        <button type="onClick">Tasks</button>
       </div>
-      <Footer/>
-
+      <Footer />
     </form>
   );
 };
