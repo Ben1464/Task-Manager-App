@@ -68,7 +68,7 @@ const TaskForm = ({ onSubmit, task }) => {
 
       <div>
         <button type="submit">Save</button>
-        <button type ="onsubmit">Tasks</button>
+        <button type='onSubmit'>Tasks</button>
       </div>
       <Footer/>
 
